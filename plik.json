@@ -1,474 +1,61 @@
 [
-  {
-    "sku": "0.007.7643.0",
-    "name": "Uszczelka tłoka hamulca 127.4x134.2x3.4 GB",
-    "brand": "GB",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.007.7643.0.jpg"
-  },
-  {
-    "sku": "0.008.5451.2",
-    "name": "Łożysko siłownika skrętu 1-020070, GE20S FAG KR INA183395",
-    "brand": "FAG",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.008.5451.2.jpg"
-  },
-  {
-    "sku": "0.009.6696.3",
-    "name": "Krzyżak półosi Matsuba",
-    "brand": "Matsuba",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.009.6696.3.jpg"
-  },
-  {
-    "sku": "0.010.0488.4-10",
-    "name": "Końcówka drążka kierowniczego ROTA",
-    "brand": "ROTA",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.010.0488.4-10.jpg"
-  },
-  {
-    "sku": "0.010.4887.0",
-    "name": "Mufa EP",
-    "brand": "Inne",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.010.4887.0.jpg"
-  },
-  {
-    "sku": "0.011.9203.2",
-    "name": "Tarcza hamulcowa przednia Carraro TVH",
-    "brand": "Carraro",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.011.9203.2.jpg"
-  },
-  {
-    "sku": "0.016.1031.2",
-    "name": "Sworzeń siłownika skrętu KR",
-    "brand": "Inne",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.016.1031.2.jpg"
-  },
-  {
-    "sku": "0.016.6208.3",
-    "name": "Przekładnia stożkowa 20-44(15-33)",
-    "brand": "Inne",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.016.6208.3.jpg"
-  },
-  {
-    "sku": "0.019.8628.0-10",
-    "name": "Uszczelka kolektora wydechowego TVH",
-    "brand": "TVH",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.019.8628.0-10.jpg"
-  },
-  {
-    "sku": "0.044.1567.0-10",
-    "name": "Filtr oleju silnika Donaldson P550580",
-    "brand": "Donaldson",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.044.1567.0-10.jpg"
-  },
-  {
-    "sku": "0.066.1754.0-10",
-    "name": "Tuleja",
-    "brand": "Inne",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.066.1754.0-10.jpg"
-  },
-  {
-    "sku": "0.085.1248.0-20",
-    "name": "piasta",
-    "brand": "Inne",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.085.1248.0-20.jpg"
-  },
-  {
-    "sku": "0.146.4643.0",
-    "name": "Sworzeń Carrao",
-    "brand": "Carraro",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.146.4643.0.jpg"
-  },
-  {
-    "sku": "0.146.4644.0",
-    "name": "Koło satelit Z18 Carraro",
-    "brand": "Carraro",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.146.4644.0.jpg"
-  },
-  {
-    "sku": "0.146.5250.0",
-    "name": "Tuleja zawieszenia osi 99.3x106.3x40 GB",
-    "brand": "GB",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.146.5250.0.jpg"
-  },
-  {
-    "sku": "0.275.4954.0-20",
-    "name": "Uszczelka zew. tłoka hamulca 183.6x190.4x3.4 TVH",
-    "brand": "TVH",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.275.4954.0-20.jpg"
-  },
-  {
-    "sku": "0.463.4350.0",
-    "name": "Podkładka czopu górnego 0,20mm Carrao GB",
-    "brand": "Carraro",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.463.4350.0.jpg"
-  },
-  {
-    "sku": "0.463.4351.0",
-    "name": "Podkładka czopu górnego 0,5mm Carrao TVH",
-    "brand": "Carraro",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.463.4351.0.jpg"
-  },
-  {
-    "sku": "0.467.4653.0-10",
-    "name": "Podkładka regulacyjna 0,2 GB",
-    "brand": "GB",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.467.4653.0-10.jpg"
-  },
-  {
-    "sku": "0.467.4654.0-10",
-    "name": "Podkładka regulacyjna 0,5 Gb",
-    "brand": "GB",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.467.4654.0-10.jpg"
-  },
-  {
-    "sku": "0.900.2688.7",
-    "name": "Półoś krótka",
-    "brand": "Inne",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "0.900.2688.7.jpg"
-  },
-  {
-    "sku": "2.1379.003.0-10",
-    "name": "Podkładka regulacyjna 0,5 Carraro gB",
-    "brand": "Carraro",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.1379.003.0-10.jpg"
-  },
-  {
-    "sku": "2.1419.029.7",
-    "name": "Zabezpieczenie GB",
-    "brand": "GB",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.1419.029.7.jpg"
-  },
-  {
-    "sku": "2.1529.112.0",
-    "name": "Uszczelniacz półosi długiej 45x65x18,5 Corteco",
-    "brand": "Corteco",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.1529.112.0.jpg"
-  },
-  {
-    "sku": "2.1529.124.0-30",
-    "name": "Uszczelniacz zwolnicy 173x200x17 Corteco",
-    "brand": "Corteco",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.1529.124.0-30.jpg"
-  },
-  {
-    "sku": "2.1529.167.0",
-    "name": "Uszczelniacz wału korbowego",
-    "brand": "Inne",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.1529.167.0.jpg"
-  },
-  {
-    "sku": "2.1530.118.0",
-    "name": "O-ring 40x3,5 TVH",
-    "brand": "TVH",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.1530.118.0.jpg"
-  },
-  {
-    "sku": "2.1530.205.0",
-    "name": "Pierścień uszczelniający 101.2x5.34 GB",
-    "brand": "GB",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.1530.205.0.jpg"
-  },
-  {
-    "sku": "2.1530.276.0",
-    "name": "O-ring piasty Carraro 536525",
-    "brand": "Carraro",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.1530.276.0.jpg"
-  },
-  {
-    "sku": "2.1530.294.0",
-    "name": "O-ring 209x1,5 GB",
-    "brand": "GB",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.1530.294.0.jpg"
-  },
-  {
-    "sku": "2.1559.309.0",
-    "name": "Tulejka półosi krótkiej GB",
-    "brand": "GB",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.1559.309.0.jpg"
-  },
-  {
-    "sku": "2.2020.022.0",
-    "name": "Łożysko kulkowe piasty SKF 131-31-99 FAG AL",
-    "brand": "SKF",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.2020.022.0.jpg"
-  },
-  {
-    "sku": "2.2030.006.0",
-    "name": "Łożysko kulkowe półosi krótkiej 25x47x12 INA FAG 6005 KR",
-    "brand": "FAG",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.2030.006.0.jpg"
-  },
-  {
-    "sku": "2.2550.007.0",
-    "name": "Łożysko dolne rolkowe 30x72x28.75 Timken KR",
-    "brand": "Timken",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.2550.007.0.jpg"
-  },
-  {
-    "sku": "2.2999.030.0",
-    "name": "Łożysko wałeczkowe 22x32x30 Carrao 536853",
-    "brand": "Carraro",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.2999.030.0.jpg"
-  },
-  {
-    "sku": "2.4119.193.0",
-    "name": "Pas klinowy uzębiony",
-    "brand": "Inne",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "2.4119.193.0.jpg"
-  },
-  {
-    "sku": "3638510M2",
-    "name": "Filtr paliwa delphi HDF496",
-    "brand": "Delphi",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "3638510M2.jpg"
-  },
-  {
-    "sku": "P119410",
-    "name": "Filtr powietrza wewnętrzny Donaldson",
-    "brand": "Donaldson",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "P119410.jpg"
-  },
-  {
-    "sku": "P771550",
-    "name": "Filtr powietrza zewnętrzny Donaldson",
-    "brand": "Donaldson",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "P771550.jpg"
-  },
-  {
-    "sku": "126-125",
-    "name": "Klin CNH",
-    "brand": "Case New Holland",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "126-125.jpg"
-  },
-  {
-    "sku": "238-5241",
-    "name": "O-ring McCormick",
-    "brand": "McCormick",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "238-5241.jpg"
-  },
-  {
-    "sku": "6404C3",
-    "name": "Łożysko 20x72x19 SKF",
-    "brand": "SKF",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "6404C3.jpg"
-  },
-  {
-    "sku": "65240C1",
-    "name": "Nakrętka CNH",
-    "brand": "Case New Holland",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "65240C1.jpg"
-  },
-  {
-    "sku": "70021C1",
-    "name": "Podkładka 0.014 CNH",
-    "brand": "Case New Holland",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "70021C1.jpg"
-  },
-  {
-    "sku": "70022C1",
-    "name": "Podkładka 0.024 CNH",
-    "brand": "Case New Holland",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "70022C1.jpg"
-  },
-  {
-    "sku": "70023C1",
-    "name": "Podkładka 0.036 CNH",
-    "brand": "Case New Holland",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "70023C1.jpg"
-  },
-  {
-    "sku": "114321A1",
-    "name": "Uszczelniacz McCormick",
-    "brand": "McCormick",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "114321A1.jpg"
-  },
-  {
-    "sku": "188931C1",
-    "name": "Uszczelnienie",
-    "brand": "Case New Holland",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "188931C1.jpg"
-  },
-  {
-    "sku": "321288A1",
-    "name": "Pompa sprzęgła McCormick",
-    "brand": "McCormick",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "321288A1.jpg"
-  },
-  {
-    "sku": "385766R91",
-    "name": "Uszczelniacz wałka WOM McCormick",
-    "brand": "McCormick",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "385766R91.jpg"
-  },
-  {
-    "sku": "401716R3",
-    "name": "Tarczka półbiegów CNH",
-    "brand": "Case New Holland",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "401716R3.jpg"
-  },
-  {
-    "sku": "401717R1",
-    "name": "Płyta dociskowa CNH",
-    "brand": "Case New Holland",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "401717R1.jpg"
-  },
-  {
-    "sku": "401724R1",
-    "name": "O-ring McCormick",
-    "brand": "McCormick",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "401724R1.jpg"
-  },
-  {
-    "sku": "402571R1",
-    "name": "O-ring McCormick",
-    "brand": "McCormick",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "402571R1.jpg"
-  },
-  {
-    "sku": "530815R1",
-    "name": "Tulejka osi wałka wysprzęglającego",
-    "brand": "Case New Holland",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "530815R1.jpg"
-  },
-  {
-    "sku": "537290R91",
-    "name": "Łożysko CNH",
-    "brand": "Case New Holland",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "537290R91.jpg"
-  },
-  {
-    "sku": "1502339C1",
-    "name": "Kosz półbiegów",
-    "brand": "Inne",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "1502339C1.jpg"
-  },
-  {
-    "sku": "1502341C1",
-    "name": "Śruba CNH",
-    "brand": "Case New Holland",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "1502341C1.jpg"
-  },
-  {
-    "sku": "A175509",
-    "name": "Pierścień teflonowy 36mm CNH",
-    "brand": "Case New Holland",
-    "category": "Brak kategorii",
-    "price": 0,
-    "image": "A175509.jpg"
-  }
+  { "sku": "0.007.7643.0", "name": "Uszczelka tłoka hamulca 127.4x134.2x3.4 GB", "brand": "GB", "category": "Uszczelki i O-ringi", "price": 0, "image": "0.007.7643.0.jpg" },
+  { "sku": "0.008.5451.2", "name": "Łożysko siłownika skrętu 1-020070, GE20S FAG KR INA183395", "brand": "FAG", "category": "Łożyska", "price": 0, "image": "0.008.5451.2.jpg" },
+  { "sku": "0.009.6696.3", "name": "Krzyżak półosi Matsuba", "brand": "Matsuba", "category": "Półosie i Piasty", "price": 0, "image": "0.009.6696.3.jpg" },
+  { "sku": "0.010.0488.4-10", "name": "Końcówka drążka kierowniczego ROTA", "brand": "ROTA", "category": "Układ Kierowniczy", "price": 0, "image": "0.010.0488.4-10.jpg" },
+  { "sku": "0.010.4887.0", "name": "Mufa EP", "brand": "Inne", "category": "Inne", "price": 0, "image": "0.010.4887.0.jpg" },
+  { "sku": "0.011.9203.2", "name": "Tarcza hamulcowa przednia Carraro TVH", "brand": "Carraro", "category": "Elementy Hamulcowe", "price": 0, "image": "0.011.9203.2.jpg" },
+  { "sku": "0.016.1031.2", "name": "Sworzeń siłownika skrętu KR", "brand": "Inne", "category": "Układ Kierowniczy", "price": 0, "image": "0.016.1031.2.jpg" },
+  { "sku": "0.016.6208.3", "name": "Przekładnia stożkowa 20-44(15-33)", "brand": "Inne", "category": "Przekładnie i Biegi", "price": 0, "image": "0.016.6208.3.jpg" },
+  { "sku": "0.019.8628.0-10", "name": "Uszczelka kolektora wydechowego TVH", "brand": "TVH", "category": "Uszczelki i O-ringi", "price": 0, "image": "0.019.8628.0-10.jpg" },
+  { "sku": "0.044.1567.0-10", "name": "Filtr oleju silnika Donaldson P550580", "brand": "Donaldson", "category": "Filtry", "price": 0, "image": "0.044.1567.0-10.jpg" },
+  { "sku": "0.066.1754.0-10", "name": "Tuleja", "brand": "Inne", "category": "Inne", "price": 0, "image": "0.066.1754.0-10.jpg" },
+  { "sku": "0.085.1248.0-20", "name": "piasta", "brand": "Inne", "category": "Półosie i Piasty", "price": 0, "image": "0.085.1248.0-20.jpg" },
+  { "sku": "0.146.4643.0", "name": "Sworzeń Carrao", "brand": "Carraro", "category": "Inne", "price": 0, "image": "0.146.4643.0.jpg" },
+  { "sku": "0.146.4644.0", "name": "Koło satelit Z18 Carraro", "brand": "Carraro", "category": "Przekładnie i Biegi", "price": 0, "image": "0.146.4644.0.jpg" },
+  { "sku": "0.146.5250.0", "name": "Tuleja zawieszenia osi 99.3x106.3x40 GB", "brand": "GB", "category": "Zawieszenie", "price": 0, "image": "0.146.5250.0.jpg" },
+  { "sku": "0.275.4954.0-20", "name": "Uszczelka zew. tłoka hamulca 183.6x190.4x3.4 TVH", "brand": "TVH", "category": "Uszczelki i O-ringi", "price": 0, "image": "0.275.4954.0-20.jpg" },
+  { "sku": "0.463.4350.0", "name": "Podkładka czopu górnego 0,20mm Carrao GB", "brand": "Carraro", "category": "Podkładki", "price": 0, "image": "0.463.4350.0.jpg" },
+  { "sku": "0.463.4351.0", "name": "Podkładka czopu górnego 0,5mm Carrao TVH", "brand": "Carraro", "category": "Podkładki", "price": 0, "image": "0.463.4351.0.jpg" },
+  { "sku": "0.467.4653.0-10", "name": "Podkładka regulacyjna 0,2 GB", "brand": "GB", "category": "Podkładki", "price": 0, "image": "0.467.4653.0-10.jpg" },
+  { "sku": "0.467.4654.0-10", "name": "Podkładka regulacyjna 0,5 Gb", "brand": "GB", "category": "Podkładki", "price": 0, "image": "0.467.4654.0-10.jpg" },
+  { "sku": "0.900.2688.7", "name": "Półoś krótka", "brand": "Inne", "category": "Półosie i Piasty", "price": 0, "image": "0.900.2688.7.jpg" },
+  { "sku": "2.1379.003.0-10", "name": "Podkładka regulacyjna 0,5 Carraro gB", "brand": "Carraro", "category": "Podkładki", "price": 0, "image": "2.1379.003.0-10.jpg" },
+  { "sku": "2.1419.029.7", "name": "Zabezpieczenie GB", "brand": "GB", "category": "Inne", "price": 0, "image": "2.1419.029.7.jpg" },
+  { "sku": "2.1529.112.0", "name": "Uszczelniacz półosi długiej 45x65x18,5 Corteco", "brand": "Corteco", "category": "Uszczelki i O-ringi", "price": 0, "image": "2.1529.112.0.jpg" },
+  { "sku": "2.1529.124.0-30", "name": "Uszczelniacz zwolnicy 173x200x17 Corteco", "brand": "Corteco", "category": "Uszczelki i O-ringi", "price": 0, "image": "2.1529.124.0-30.jpg" },
+  { "sku": "2.1529.167.0", "name": "Uszczelniacz wału korbowego", "brand": "Inne", "category": "Uszczelki i O-ringi", "price": 0, "image": "2.1529.167.0.jpg" },
+  { "sku": "2.1530.118.0", "name": "O-ring 40x3,5 TVH", "brand": "TVH", "category": "Uszczelki i O-ringi", "price": 0, "image": "2.1530.118.0.jpg" },
+  { "sku": "2.1530.205.0", "name": "Pierścień uszczelniający 101.2x5.34 GB", "brand": "GB", "category": "Uszczelki i O-ringi", "price": 0, "image": "2.1530.205.0.jpg" },
+  { "sku": "2.1530.276.0", "name": "O-ring piasty Carraro 536525", "brand": "Carraro", "category": "Uszczelki i O-ringi", "price": 0, "image": "2.1530.276.0.jpg" },
+  { "sku": "2.1530.294.0", "name": "O-ring 209x1,5 GB", "brand": "GB", "category": "Uszczelki i O-ringi", "price": 0, "image": "2.1530.294.0.jpg" },
+  { "sku": "2.1559.309.0", "name": "Tulejka półosi krótkiej GB", "brand": "GB", "category": "Półosie i Piasty", "price": 0, "image": "2.1559.309.0.jpg" },
+  { "sku": "2.2020.022.0", "name": "Łożysko kulkowe piasty SKF 131-31-99 FAG AL", "brand": "SKF", "category": "Łożyska", "price": 0, "image": "2.2020.022.0.jpg" },
+  { "sku": "2.2030.006.0", "name": "Łożysko kulkowe półosi krótkiej 25x47x12 INA FAG 6005 KR", "brand": "FAG", "category": "Łożyska", "price": 0, "image": "2.2030.006.0.jpg" },
+  { "sku": "2.2550.007.0", "name": "Łożysko dolne rolkowe 30x72x28.75 Timken KR", "brand": "Timken", "category": "Łożyska", "price": 0, "image": "2.2550.007.0.jpg" },
+  { "sku": "2.2999.030.0", "name": "Łożysko wałeczkowe 22x32x30 Carrao 536853", "brand": "Carraro", "category": "Łożyska", "price": 0, "image": "2.2999.030.0.jpg" },
+  { "sku": "2.4119.193.0", "name": "Pas klinowy uzębiony", "brand": "Inne", "category": "Napęd", "price": 0, "image": "2.4119.193.0.jpg" },
+  { "sku": "3638510M2", "name": "Filtr paliwa delphi HDF496", "brand": "Delphi", "category": "Filtry", "price": 0, "image": "3638510M2.jpg" },
+  { "sku": "P119410", "name": "Filtr powietrza wewnętrzny Donaldson", "brand": "Donaldson", "category": "Filtry", "price": 0, "image": "P119410.jpg" },
+  { "sku": "P771550", "name": "Filtr powietrza zewnętrzny Donaldson", "brand": "Donaldson", "category": "Filtry", "price": 0, "image": "P771550.jpg" },
+  { "sku": "126-125", "name": "Klin CNH", "brand": "Case New Holland", "category": "Inne", "price": 0, "image": "126-125.jpg" },
+  { "sku": "238-5241", "name": "O-ring McCormick", "brand": "McCormick", "category": "Uszczelki i O-ringi", "price": 0, "image": "238-5241.jpg" },
+  { "sku": "6404C3", "name": "Łożysko 20x72x19 SKF", "brand": "SKF", "category": "Łożyska", "price": 0, "image": "6404C3.jpg" },
+  { "sku": "65240C1", "name": "Nakrętka CNH", "brand": "Case New Holland", "category": "Śruby i Nakrętki", "price": 0, "image": "65240C1.jpg" },
+  { "sku": "70021C1", "name": "Podkładka 0.014 CNH", "brand": "Case New Holland", "category": "Podkładki", "price": 0, "image": "70021C1.jpg" },
+  { "sku": "70022C1", "name": "Podkładka 0.024 CNH", "brand": "Case New Holland", "category": "Podkładki", "price": 0, "image": "70022C1.jpg" },
+  { "sku": "70023C1", "name": "Podkładka 0.036 CNH", "brand": "Case New Holland", "category": "Podkładki", "price": 0, "image": "70023C1.jpg" },
+  { "sku": "114321A1", "name": "Uszczelniacz McCormick", "brand": "McCormick", "category": "Uszczelki i O-ringi", "price": 0, "image": "114321A1.jpg" },
+  { "sku": "188931C1", "name": "Uszczelnienie", "brand": "Case New Holland", "category": "Uszczelki i O-ringi", "price": 0, "image": "188931C1.jpg" },
+  { "sku": "321288A1", "name": "Pompa sprzęgła McCormick", "brand": "McCormick", "category": "Pompy", "price": 0, "image": "321288A1.jpg" },
+  { "sku": "385766R91", "name": "Uszczelniacz wałka WOM McCormick", "brand": "McCormick", "category": "Uszczelki i O-ringi", "price": 0, "image": "385766R91.jpg" },
+  { "sku": "401716R3", "name": "Tarczka półbiegów CNH", "brand": "Case New Holland", "category": "Przekładnie i Biegi", "price": 0, "image": "401716R3.jpg" },
+  { "sku": "401717R1", "name": "Płyta dociskowa CNH", "brand": "Case New Holland", "category": "Elementy Hamulcowe", "price": 0, "image": "401717R1.jpg" },
+  { "sku": "401724R1", "name": "O-ring McCormick", "brand": "McCormick", "category": "Uszczelki i O-ringi", "price": 0, "image": "401724R1.jpg" },
+  { "sku": "402571R1", "name": "O-ring McCormick", "brand": "McCormick", "category": "Uszczelki i O-ringi", "price": 0, "image": "402571R1.jpg" },
+  { "sku": "530815R1", "name": "Tulejka osi wałka wysprzęglającego", "brand": "Case New Holland", "category": "Inne", "price": 0, "image": "530815R1.jpg" },
+  { "sku": "537290R91", "name": "Łożysko CNH", "brand": "Case New Holland", "category": "Łożyska", "price": 0, "image": "537290R91.jpg" },
+  { "sku": "1502339C1", "name": "Kosz półbiegów", "brand": "Inne", "category": "Przekładnie i Biegi", "price": 0, "image": "1502339C1.jpg" },
+  { "sku": "1502341C1", "name": "Śruba CNH", "brand": "Case New Holland", "category": "Śruby i Nakrętki", "price": 0, "image": "1502341C1.jpg" },
+  { "sku": "A175509", "name": "Pierścień teflonowy 36mm CNH", "brand": "Case New Holland", "category": "Uszczelki i O-ringi", "price": 0, "image": "A175509.jpg" }
 ]

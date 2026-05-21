@@ -856,3 +856,40 @@ footer ul {
 .hidden {
     display: none !important;
 }
+/* ==========================================
+   BADGE KATEGORII NA KARCIE PRODUKTU
+   Wklej na koniec style.css
+   ========================================== */
+
+/* Mały label kategorii na karcie produktu w siatce */
+.product-category-badge {
+    font-size: 11px;
+    color: var(--bg-white);
+    background-color: var(--primary-color);
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+/* Link kategorii w breadcrumbs i category-label */
+.category-label a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+.category-label a:hover {
+    opacity: 0.75;
+}
+
+.breadcrumbs a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
