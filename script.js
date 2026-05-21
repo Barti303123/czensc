@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. ZAKŁADKI (TABS) I MINIATURKI
+    // ==========================================
+    // 1. ZAKŁADKI I MINIATURKI (Karta produktu)
+    // ==========================================
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
     if (tabBtns.length > 0) {
@@ -22,140 +24,163 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. GŁÓWNY SYSTEM SKLEPU
-    const shopGrid = document.querySelector('.shop-layout .products-grid');
-    let allProducts = [];
-    let filteredProducts = [];
-    let currentPage = 1;
-    const itemsPerPage = 12;
+    // ==========================================
+    // 2. GLOBALNA WYSZUKIWARKA (LUPA)
+    // ==========================================
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+            // Jeśli klient wciśnie Enter
+            if (e.key === 'Enter') {
+                // Sprawdź czy NIE jesteśmy w sklepie
+                if (!window.location.pathname.includes('sklep.html')) {
+                    // Przenieś do sklepu i podaj w linku wpisane słowo
+                    window.location.href = `sklep.html?szukaj=${encodeURIComponent(searchInput.value)}`;
+                }
+            }
+        });
+    }
 
+    // ==========================================
+    // 3. STRONA GŁÓWNA (4 najnowsze produkty)
+    // ==========================================
+    const homeGrid = document.getElementById('homeProductsGrid');
+    if (homeGrid) {
+        fetch('plik.json')
+            .then(response => response.json())
+            .then(products => {
+                homeGrid.innerHTML = ''; 
+                // Pobierz tylko 4 pierwsze pozycje z JSON
+                const firstFour = products.slice(0, 4);
+                
+                firstFour.forEach(product => {
+                    const safeSku = encodeURIComponent(product.sku);
+                    const html = `
+                        <a href="produkt.html?sku=${safeSku}" class="product-card">
+                            <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'">
+                            <p class="product-sku">${product.sku}</p>
+                            <h3 class="product-name">${product.name}</h3>
+                        </a>
+                    `;
+                    homeGrid.insertAdjacentHTML('beforeend', html);
+                });
+            })
+            .catch(error => console.error('Błąd na stronie głównej:', error));
+    }
+
+    // ==========================================
+    // 4. STRONA SKLEPU (Filtry, Paginacja)
+    // ==========================================
+    const shopGrid = document.querySelector('.shop-layout .products-grid');
     if (shopGrid) {
+        let allProducts = [];
+        let filteredProducts = [];
+        let currentPage = 1;
+        const itemsPerPage = 12;
+
         fetch('plik.json')
             .then(response => response.json())
             .then(products => {
                 allProducts = products;
                 filteredProducts = products;
-                initFiltersAndSearch();
+                initShopFilters();
                 renderPage(1);
-            })
-            .catch(error => console.error('Błąd ładowania pliku JSON:', error));
-    } else {
-        initGlobalSearch();
-    }
-
-    // --- RYSOWANIE SIATKI ---
-    function renderPage(page) {
-        currentPage = page;
-        shopGrid.innerHTML = ''; 
-        const start = (page - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const paginatedItems = filteredProducts.slice(start, end);
-
-        paginatedItems.forEach(product => {
-            // Używamy bezpiecznego linku encodeURIComponent
-            const safeSku = encodeURIComponent(product.sku);
-            const html = `
-                <a href="produkt.html?sku=${safeSku}" class="product-card" data-brand="${product.brand.toLowerCase()}">
-                    <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'">
-                    <p class="product-sku">${product.sku}</p>
-                    <h3 class="product-name">${product.name}</h3>
-                </a>
-            `;
-            shopGrid.insertAdjacentHTML('beforeend', html);
-        });
-
-        updatePaginationUI();
-        const countDisplay = document.querySelector('.shop-top-bar p');
-        if (countDisplay) {
-            const showingEnd = Math.min(end, filteredProducts.length);
-            const showingStart = filteredProducts.length > 0 ? start + 1 : 0;
-            countDisplay.textContent = `Wyświetlanie ${showingStart}–${showingEnd} z ${filteredProducts.length} wyników`;
-        }
-    }
-
-    // --- PAGINACJA ---
-    function updatePaginationUI() {
-        let paginationContainer = document.querySelector('.pagination');
-        if (!paginationContainer) return;
-        
-        paginationContainer.innerHTML = '';
-        const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-        if (totalPages <= 1) return; 
-
-        for (let i = 1; i <= totalPages; i++) {
-            const span = document.createElement('span');
-            span.className = `page-num ${i === currentPage ? 'active' : ''}`;
-            span.textContent = i;
-            span.addEventListener('click', () => {
-                renderPage(i);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-            paginationContainer.appendChild(span);
-        }
-    }
 
-    // --- FILTRY ---
-    function initFiltersAndSearch() {
-        const searchInput = document.getElementById('searchInput');
-        const checkboxes = document.querySelectorAll('.filter-list input[type="checkbox"]');
-        const filterBtn = document.querySelector('.sidebar .btn');
-        const urlParams = new URLSearchParams(window.location.search);
-        const searchQuery = urlParams.get('szukaj');
+        function renderPage(page) {
+            currentPage = page;
+            shopGrid.innerHTML = ''; 
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedItems = filteredProducts.slice(start, end);
 
-        if (searchQuery && searchInput) searchInput.value = decodeURIComponent(searchQuery);
-
-        function applyFilters() {
-            const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
-            const activeBrands = Array.from(checkboxes)
-                .filter(box => box.checked)
-                .map(box => box.nextElementSibling.textContent.toLowerCase());
-
-            filteredProducts = allProducts.filter(product => {
-                const name = product.name.toLowerCase();
-                const sku = product.sku.toLowerCase();
-                const brand = product.brand.toLowerCase();
-
-                const matchesSearch = name.includes(searchTerm) || sku.includes(searchTerm);
-                const matchesBrand = activeBrands.length === 0 || activeBrands.includes(brand) || activeBrands.some(b => name.includes(b));
-                return matchesSearch && matchesBrand;
+            paginatedItems.forEach(product => {
+                const safeSku = encodeURIComponent(product.sku);
+                const html = `
+                    <a href="produkt.html?sku=${safeSku}" class="product-card" data-brand="${product.brand.toLowerCase()}">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'">
+                        <p class="product-sku">${product.sku}</p>
+                        <h3 class="product-name">${product.name}</h3>
+                    </a>
+                `;
+                shopGrid.insertAdjacentHTML('beforeend', html);
             });
-            renderPage(1);
+
+            updatePaginationUI();
+            const countDisplay = document.querySelector('.shop-top-bar p');
+            if (countDisplay) {
+                const showingEnd = Math.min(end, filteredProducts.length);
+                const showingStart = filteredProducts.length > 0 ? start + 1 : 0;
+                countDisplay.textContent = `Wyświetlanie ${showingStart}–${showingEnd} z ${filteredProducts.length} wyników`;
+            }
         }
 
-        if (searchInput) searchInput.addEventListener('input', applyFilters);
-        if (filterBtn) filterBtn.addEventListener('click', applyFilters);
-        if (searchQuery) applyFilters();
-    }
+        function updatePaginationUI() {
+            let paginationContainer = document.querySelector('.pagination');
+            if (!paginationContainer) return;
+            
+            paginationContainer.innerHTML = '';
+            const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+            if (totalPages <= 1) return; 
 
-    // --- WYSZUKIWARKA GLOBALNA ---
-    function initGlobalSearch() {
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    window.location.href = `sklep.html?szukaj=${encodeURIComponent(searchInput.value)}`;
-                }
-            });
+            for (let i = 1; i <= totalPages; i++) {
+                const span = document.createElement('span');
+                span.className = `page-num ${i === currentPage ? 'active' : ''}`;
+                span.textContent = i;
+                span.addEventListener('click', () => {
+                    renderPage(i);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                paginationContainer.appendChild(span);
+            }
+        }
+
+        function initShopFilters() {
+            const checkboxes = document.querySelectorAll('.filter-list input[type="checkbox"]');
+            const filterBtn = document.querySelector('.sidebar .btn');
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('szukaj');
+
+            if (searchQuery && searchInput) searchInput.value = decodeURIComponent(searchQuery);
+
+            function applyFilters() {
+                const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+                const activeBrands = Array.from(checkboxes)
+                    .filter(box => box.checked)
+                    .map(box => box.nextElementSibling.textContent.toLowerCase());
+
+                filteredProducts = allProducts.filter(product => {
+                    const name = product.name.toLowerCase();
+                    const sku = product.sku.toLowerCase();
+                    const brand = product.brand.toLowerCase();
+
+                    const matchesSearch = name.includes(searchTerm) || sku.includes(searchTerm);
+                    const matchesBrand = activeBrands.length === 0 || activeBrands.includes(brand) || activeBrands.some(b => name.includes(b));
+                    return matchesSearch && matchesBrand;
+                });
+                renderPage(1);
+            }
+
+            if (searchInput) searchInput.addEventListener('input', applyFilters);
+            if (filterBtn) filterBtn.addEventListener('click', applyFilters);
+            if (searchQuery) applyFilters();
         }
     }
 
-    // ---------------------------------------------------------
-    // 4. ŁADOWANIE POJEDYNCZEGO PRODUKTU
-    // ---------------------------------------------------------
+    // ==========================================
+    // 5. STRONA POJEDYNCZEGO PRODUKTU
+    // ==========================================
     const productSingleLayout = document.querySelector('.product-single-layout');
-    
     if (productSingleLayout) {
         const urlParams = new URLSearchParams(window.location.search);
         const rawSku = urlParams.get('sku');
 
         if (rawSku) {
-            // Odkodowujemy SKU z linku
             const productSku = decodeURIComponent(rawSku);
 
             fetch('plik.json')
                 .then(response => response.json())
                 .then(products => {
-                    // Znajdź dokładne dopasowanie SKU jako tekst
                     const product = products.find(p => String(p.sku) === String(productSku));
                     
                     if (product) {
@@ -171,22 +196,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (mainImage) {
                             mainImage.src = product.image;
                             mainImage.alt = product.name;
-                            // Jeśli obrazka nie ma fizycznie na serwerze, ukrywamy go, żeby nie sypało błędami
-                            mainImage.onerror = function() {
-                                this.style.display = 'none';
-                            };
+                            mainImage.onerror = function() { this.style.display = 'none'; };
                         }
 
                         const thumbnailsContainer = document.querySelector('.thumbnails');
-                        if (thumbnailsContainer) {
-                            thumbnailsContainer.style.display = 'none';
-                        }
-                    } else {
-                        // Zabezpieczenie na wypadek, gdyby produkt nie istniał w JSON
-                        document.querySelector('.product-info h1').textContent = "Nie znaleziono produktu w bazie";
+                        if (thumbnailsContainer) thumbnailsContainer.style.display = 'none';
                     }
-                })
-                .catch(error => console.error('Błąd ładowania produktu:', error));
+                });
         }
     }
 });
