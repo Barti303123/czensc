@@ -138,6 +138,15 @@ img {
     padding-bottom: 5px; /* Odstęp paska od tekstu */
     text-decoration: none;
 }
+/* Zmienia kolor tekstu aktywnej strony na zielony */
+.main-nav a.active {
+    color: var(--primary-color); 
+}
+
+/* Wymusza, żeby zielony pasek pod spodem był rozsunięty na stałe */
+.main-nav a.active::after {
+    width: 100%;
+}
 
 /* Ukryty zielony pasek na start (szerokość 0) */
 .main-nav a::after {
@@ -153,15 +162,6 @@ img {
 
 /* Po najechaniu myszką (hover) pasek rozszerza się do 100% */
 .main-nav a:hover::after {
-    width: 100%;
-}
-/* Zmienia kolor tekstu aktywnej strony na zielony */
-.main-nav a.active {
-    color: var(--primary-color); 
-}
-
-/* Wymusza, żeby zielony pasek pod spodem był rozsunięty na stałe */
-.main-nav a.active::after {
     width: 100%;
 }
 
