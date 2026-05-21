@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
+    // --- NIEZAWODNY OBRAZEK ZASTĘPCZY (Wbudowany w kod - omija adblockery) ---
+    const fallbackImage = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22150%22%20viewBox%3D%220%200%20200%20150%22%3E%3Crect%20fill%3D%22%23f8f9fa%22%20width%3D%22200%22%20height%3D%22150%22%2F%3E%3Ctext%20fill%3D%22%23adb5bd%22%20font-family%3D%22sans-serif%22%20font-size%3D%2214%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EBrak%20Zdjecia%3C%2Ftext%3E%3C%2Fsvg%3E';
+
     // ==========================================
     // 1. ZAKŁADKI I MINIATURKI (Karta produktu)
     // ==========================================
@@ -25,20 +28,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 2. GLOBALNA WYSZUKIWARKA (LUPA)
+    // 2. GLOBALNA WYSZUKIWARKA (LUPA) - POPRAWIONA
     // ==========================================
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
-        searchInput.addEventListener('keypress', (e) => {
-            // Jeśli klient wciśnie Enter
-            if (e.key === 'Enter') {
-                // Sprawdź czy NIE jesteśmy w sklepie
+        // Funkcja wykonująca wyszukiwanie
+        const performSearch = () => {
+            const query = searchInput.value.trim();
+            if (query) {
+                // Przenieś do sklepu tylko jeśli nie jesteśmy w sklepie
                 if (!window.location.pathname.includes('sklep.html')) {
-                    // Przenieś do sklepu i podaj w linku wpisane słowo
-                    window.location.href = `sklep.html?szukaj=${encodeURIComponent(searchInput.value)}`;
+                    window.location.href = `sklep.html?szukaj=${encodeURIComponent(query)}`;
                 }
             }
+        };
+
+        // Nasłuchiwanie klawisza Enter
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault(); // Blokuje domyślne zachowanie przeglądarki!
+                performSearch();
+            }
         });
+
+        // Nasłuchiwanie KLIKNIĘCIA w ikonę lupy
+        const searchIcon = searchInput.nextElementSibling;
+        if (searchIcon && searchIcon.tagName === 'I') {
+            searchIcon.style.cursor = 'pointer';
+            searchIcon.addEventListener('click', performSearch);
+        }
     }
 
     // ==========================================
@@ -50,14 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(products => {
                 homeGrid.innerHTML = ''; 
-                // Pobierz tylko 4 pierwsze pozycje z JSON
                 const firstFour = products.slice(0, 4);
                 
                 firstFour.forEach(product => {
                     const safeSku = encodeURIComponent(product.sku);
                     const html = `
                         <a href="produkt.html?sku=${safeSku}" class="product-card">
-                            <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'">
+                            <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.src='${fallbackImage}';">
                             <p class="product-sku">${product.sku}</p>
                             <h3 class="product-name">${product.name}</h3>
                         </a>
@@ -98,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const safeSku = encodeURIComponent(product.sku);
                 const html = `
                     <a href="produkt.html?sku=${safeSku}" class="product-card" data-brand="${product.brand.toLowerCase()}">
-                        <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.src='${fallbackImage}';">
                         <p class="product-sku">${product.sku}</p>
                         <h3 class="product-name">${product.name}</h3>
                     </a>
@@ -196,7 +213,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (mainImage) {
                             mainImage.src = product.image;
                             mainImage.alt = product.name;
-                            mainImage.onerror = function() { this.style.display = 'none'; };
+                            mainImage.onerror = function() {
+                                this.onerror = null; 
+                                this.src = fallbackImage; 
+                            };
                         }
 
                         const thumbnailsContainer = document.querySelector('.thumbnails');
