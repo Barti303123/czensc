@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. GŁÓWNY SYSTEM SKLEPU (Ładowanie, Filtry, Paginacja)
+    // 2. GŁÓWNY SYSTEM SKLEPU
     const shopGrid = document.querySelector('.shop-layout .products-grid');
     let allProducts = [];
     let filteredProducts = [];
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initGlobalSearch();
     }
 
-    // --- FUNKCJA RYSOWANIA STRONY SKLEPU ---
+    // --- RYSOWANIE SIATKI ---
     function renderPage(page) {
         currentPage = page;
         shopGrid.innerHTML = ''; 
@@ -52,9 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const paginatedItems = filteredProducts.slice(start, end);
 
         paginatedItems.forEach(product => {
+            // Używamy bezpiecznego linku encodeURIComponent
+            const safeSku = encodeURIComponent(product.sku);
             const html = `
-                <a href="produkt.html?sku=${product.sku}" class="product-card" data-brand="${product.brand.toLowerCase()}">
-                    <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x150?text=Brak+Zdjecia';">
+                <a href="produkt.html?sku=${safeSku}" class="product-card" data-brand="${product.brand.toLowerCase()}">
+                    <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'">
                     <p class="product-sku">${product.sku}</p>
                     <h3 class="product-name">${product.name}</h3>
                 </a>
@@ -71,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- FUNKCJA PAGINACJI ---
+    // --- PAGINACJA ---
     function updatePaginationUI() {
         let paginationContainer = document.querySelector('.pagination');
         if (!paginationContainer) return;
@@ -92,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- FUNKCJA FILTRÓW ---
+    // --- FILTRY ---
     function initFiltersAndSearch() {
         const searchInput = document.getElementById('searchInput');
         const checkboxes = document.querySelectorAll('.filter-list input[type="checkbox"]');
@@ -100,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const searchQuery = urlParams.get('szukaj');
 
-        if (searchQuery && searchInput) searchInput.value = searchQuery;
+        if (searchQuery && searchInput) searchInput.value = decodeURIComponent(searchQuery);
 
         function applyFilters() {
             const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
@@ -138,52 +140,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ---------------------------------------------------------
-    // 4. ŁADOWANIE POJEDYNCZEGO PRODUKTU (produkt.html)
+    // 4. ŁADOWANIE POJEDYNCZEGO PRODUKTU
     // ---------------------------------------------------------
     const productSingleLayout = document.querySelector('.product-single-layout');
     
     if (productSingleLayout) {
         const urlParams = new URLSearchParams(window.location.search);
-        const productSku = urlParams.get('sku');
+        const rawSku = urlParams.get('sku');
 
-        if (productSku) {
+        if (rawSku) {
+            // Odkodowujemy SKU z linku
+            const productSku = decodeURIComponent(rawSku);
+
             fetch('plik.json')
                 .then(response => response.json())
                 .then(products => {
-                    // Szukamy produktu po numerze SKU z linku
-                    const product = products.find(p => p.sku === productSku);
+                    // Znajdź dokładne dopasowanie SKU jako tekst
+                    const product = products.find(p => String(p.sku) === String(productSku));
                     
                     if (product) {
-                        // Podmiana tytułu i kategorii
                         document.querySelector('.product-info h1').textContent = `${product.sku} ${product.name}`;
                         document.querySelector('.category-label').textContent = product.category.toUpperCase();
                         
-                        // Podmiana ścieżki (breadcrumbs)
                         const breadcrumbs = document.querySelector('.breadcrumbs p');
                         if (breadcrumbs) {
                             breadcrumbs.textContent = `Strona Główna / Sklep / ${product.category} / ${product.sku} ${product.name}`;
                         }
                         
-                        // Podmiana głównego zdjęcia
                         const mainImage = document.querySelector('.main-image img');
                         if (mainImage) {
                             mainImage.src = product.image;
                             mainImage.alt = product.name;
+                            // Jeśli obrazka nie ma fizycznie na serwerze, ukrywamy go, żeby nie sypało błędami
                             mainImage.onerror = function() {
-                                this.onerror = null; 
-                                this.src = 'https://via.placeholder.com/500x400?text=Brak+Zdjecia';
+                                this.style.display = 'none';
                             };
                         }
 
-                        // Ukrycie miniaturek (skoro z PDF mamy tylko 1 zdjęcie per produkt)
                         const thumbnailsContainer = document.querySelector('.thumbnails');
                         if (thumbnailsContainer) {
                             thumbnailsContainer.style.display = 'none';
                         }
+                    } else {
+                        // Zabezpieczenie na wypadek, gdyby produkt nie istniał w JSON
+                        document.querySelector('.product-info h1').textContent = "Nie znaleziono produktu w bazie";
                     }
                 })
                 .catch(error => console.error('Błąd ładowania produktu:', error));
         }
     }
-
 });
