@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- NIEZAWODNY OBRAZEK ZASTĘPCZY (Wbudowany w kod - omija adblockery) ---
+    // --- NIEZAWODNY OBRAZEK ZASTĘPCZY ---
     const fallbackImage = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22150%22%20viewBox%3D%220%200%20200%20150%22%3E%3Crect%20fill%3D%22%23f8f9fa%22%20width%3D%22200%22%20height%3D%22150%22%2F%3E%3Ctext%20fill%3D%22%23adb5bd%22%20font-family%3D%22sans-serif%22%20font-size%3D%2214%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EBrak%20Zdjecia%3C%2Ftext%3E%3C%2Fsvg%3E';
 
     // ==========================================
@@ -28,30 +28,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 2. GLOBALNA WYSZUKIWARKA (LUPA) - POPRAWIONA
+    // 2. GLOBALNA WYSZUKIWARKA (LUPA)
     // ==========================================
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
-        // Funkcja wykonująca wyszukiwanie
         const performSearch = () => {
             const query = searchInput.value.trim();
-            if (query) {
-                // Przenieś do sklepu tylko jeśli nie jesteśmy w sklepie
-                if (!window.location.pathname.includes('sklep.html')) {
-                    window.location.href = `sklep.html?szukaj=${encodeURIComponent(query)}`;
-                }
+            if (query && !window.location.pathname.includes('sklep.html')) {
+                window.location.href = `sklep.html?szukaj=${encodeURIComponent(query)}`;
             }
         };
 
-        // Nasłuchiwanie klawisza Enter
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                e.preventDefault(); // Blokuje domyślne zachowanie przeglądarki!
+                e.preventDefault(); 
                 performSearch();
             }
         });
 
-        // Nasłuchiwanie KLIKNIĘCIA w ikonę lupy
         const searchIcon = searchInput.nextElementSibling;
         if (searchIcon && searchIcon.tagName === 'I') {
             searchIcon.style.cursor = 'pointer';
@@ -200,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(products => {
                     const product = products.find(p => String(p.sku) === String(productSku));
                     
+                    // -- PODMIANA GŁÓWNYCH DANYCH --
                     if (product) {
                         document.querySelector('.product-info h1').textContent = `${product.sku} ${product.name}`;
                         document.querySelector('.category-label').textContent = product.category.toUpperCase();
@@ -221,6 +216,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         const thumbnailsContainer = document.querySelector('.thumbnails');
                         if (thumbnailsContainer) thumbnailsContainer.style.display = 'none';
+                    }
+
+                    // -- PODOBNE PRODUKTY (LOSOWE 4) --
+                    const relatedGrid = document.getElementById('relatedProductsGrid');
+                    if (relatedGrid) {
+                        relatedGrid.innerHTML = ''; 
+                        
+                        // Odrzucamy produkt, który właśnie przeglądamy
+                        const otherProducts = products.filter(p => String(p.sku) !== String(productSku));
+                        
+                        // Mieszamy tablicę, żeby wylosować fajne produkty, i ucinamy do 4 sztuk
+                        const randomProducts = otherProducts.sort(() => 0.5 - Math.random()).slice(0, 4);
+
+                        randomProducts.forEach(prod => {
+                            const safeSku = encodeURIComponent(prod.sku);
+                            const html = `
+                                <a href="produkt.html?sku=${safeSku}" class="product-card">
+                                    <img src="${prod.image}" alt="${prod.name}" onerror="this.onerror=null; this.src='${fallbackImage}';">
+                                    <p class="product-sku">${prod.sku}</p>
+                                    <h3 class="product-name">${prod.name}</h3>
+                                </a>
+                            `;
+                            relatedGrid.insertAdjacentHTML('beforeend', html);
+                        });
                     }
                 });
         }
