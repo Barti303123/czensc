@@ -78,55 +78,50 @@ img {
 }
 
 /* HEADER & TOP BAR */
-.top-bar {
-    background-color: var(--bg-white);
-    border-bottom: 1px solid var(--border-color);
-    padding: 8px 0;
-    font-size: 13px;
-    color: var(--text-light);
-}
-
-.top-bar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.top-bar .left-info span, .top-bar .right-info span {
-    margin-right: 15px;
-}
-
 .main-header {
     background-color: var(--bg-white);
-    padding: 20px 0;
+    padding-top: 20px;
     border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 100;
 }
 
-.main-header .container {
+.header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding-bottom: 20px;
 }
 
 .logo-container img {
-    height: 50px;
-    margin-bottom: 5px;
+    height: 120px; /* Znacznie powiększone logo */
+    max-width: 100%;
 }
 
-.logo-text {
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    letter-spacing: 1px;
+.header-contact {
+    display: flex;
+    gap: 30px;
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.contact-col p strong {
+    color: var(--text-main);
+}
+
+.address-col {
+    border-left: 1px solid var(--border-color);
+    padding-left: 30px;
+}
+
+.header-bottom {
+    border-top: 1px solid var(--border-color);
+    padding: 15px 0;
+}
+
+.header-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .main-nav ul {
@@ -135,15 +130,16 @@ img {
 }
 
 .main-nav a {
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     font-size: 14px;
+    color: var(--text-main);
 }
 
 .header-icons {
     display: flex;
     gap: 20px;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .header-icons i {
@@ -155,6 +151,24 @@ img {
     color: var(--primary-color);
 }
 
+/* Poprawka dla RWD */
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    .address-col {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        padding-left: 0;
+        padding-top: 15px;
+    }
+    .header-bottom .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
 /* FOOTER */
 footer {
     background-color: var(--bg-white);
