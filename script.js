@@ -189,15 +189,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (filterBtn) filterBtn.addEventListener('click', applyFilters);
 
             // Przycisk wyczyść filtry
-            const clearBtn = document.getElementById('clearFilters');
-            if (clearBtn) {
-                clearBtn.addEventListener('click', () => {
-                    checkboxes.forEach(box => box.checked = false);
-                    if (searchInput) searchInput.value = '';
-                    filteredProducts = allProducts;
-                    renderPage(1);
-                });
-            }
+        const clearBtn = document.getElementById('clearFilters');
+        if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+        checkboxes.forEach(box => box.checked = false);
+        if (searchInput) searchInput.value = '';
+        applyFilters(); // ← zamiast ręcznego resetowania
+    });
+}
 
             if (searchQuery || categoryQuery) applyFilters();
         }
