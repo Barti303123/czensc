@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
                 
                 renderPage(1);
-            }
+            
 
            if (searchInput) searchInput.addEventListener('input', applyFilters);
             if (filterBtn) filterBtn.addEventListener('click', applyFilters);
